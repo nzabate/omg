@@ -1,0 +1,10 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<div fxLayout="column" fxLayoutGap="15px">
+	<div fxLayoutAlign="end"><i class="fas fa-times" matTooltip="Close" (click)="toggleShareDialog(index)"></i></div>
+	<div fxLayout="row" fxLayoutGap="15px">
+		<mat-form-field fxFlex>
+			<input placeholder="Share Link" spellcheck="false" [value]="shareLink" (copied)="onCopySucess($event)" matInput fxFlex/>
+		</mat-form-field>
+		<button class="btn-copy" type="button" (click)="copyImageLink(shareLink)" mat-button>Copy Link</button>
+	</div>
+</div>

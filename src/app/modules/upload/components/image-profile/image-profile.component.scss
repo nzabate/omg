@@ -1,0 +1,285 @@
+@import "src/styleguide/shared";
+
+app-card {
+  position: relative;
+}
+
+app-card,
+.app-card-content {
+  width: 100%;
+}
+
+.fa-times-circle {
+  color: $color-black;
+  position: relative;
+  top: -16px;
+  font-size: 20px;
+  float: right;
+  left: 20px;
+  cursor: pointer;
+}
+
+.img-container {
+  height: 425px;
+  border-radius: 4px;
+  background-color: $color-black;
+}
+
+.close-upload-detail {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20.7px 22px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.tag-container {
+  min-height: 40px;
+}
+
+.history-container {
+  position: relative;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.uploaded-image {
+  height: max-content;
+  max-height: 425px;
+  width: -webkit-fill-available;
+  min-width: auto;
+  max-width: fit-content;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-icon {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.btn-primary {
+  @include btn-primary;
+}
+
+.btn-send {
+  @include btn-primary;
+}
+
+.btn-cancel {
+  @include btn-secondary;
+  margin-right: 14px;
+}
+
+.sources-container {
+  position: relative;
+
+  .share-image-link {
+    position: relative;
+
+    app-share-link-dialog {
+      left: -10px;
+      top: -135px;
+      z-index: 1;
+  
+      &:after {
+        right: unset;
+        left: 50px;
+      }
+    }
+  }
+}
+
+.enlarge-main-file {
+  cursor: pointer;
+
+  .enlarge-icon {
+    margin-right: 5px;
+  }
+}
+
+.img-source-ref {
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+}
+
+.tags {
+  padding: 5px 10px;
+  background: $color-gray;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.img-box {
+  position: relative;
+  max-height: 110px;
+  min-height: 110px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .trash-icon {
+    position: absolute;
+    bottom: 55px;
+    right: 35px;
+    cursor: pointer;
+  }
+
+  .reference-download {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 26px;
+    bottom: 26px;
+
+    &:hover .download-icon { 
+      opacity: 1;
+    }
+
+    .download-icon {
+      cursor: pointer;
+      width: 35.48px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+  }
+
+  .text {
+    position: relative;
+    bottom: 20px;
+
+    span {
+      display: block;
+      width: 100%;
+      font-size: 10px;
+      line-height: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.3);
+      font-family: Arial, sans-serif;
+      color: $color-white;
+    }
+  }
+}
+
+.img-box:hover mat-icon {
+  display: block;
+}
+
+:host ::ng-deep {
+
+  app-upload-detail-card:nth-child(-n+2) .content {
+    border-bottom: none;
+  }
+
+  mat-card {
+    min-height: 700px;
+    min-width: 1300px !important;
+  }
+
+  .mat-expansion-panel {
+    margin-bottom: 10px;
+  }
+
+  .mat-expansion-panel-header-description,
+  .mat-expansion-panel-header-title {
+    font-weight: 600;
+  }
+}
+
+// Chat Box //
+
+.chat-box-wrapper {
+  max-height: 600px;
+  overflow-y: scroll;
+
+  .chat-wrapper {
+    margin-right: 15px;
+    
+    .chat-box {
+      max-width: 90%;
+      min-width: 212px;
+      border: 2px solid $color-white;
+      background-color: $color-white;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgb(0, 0, 0, .16);
+      padding: 13px 10px;
+      margin: 0;
+      margin-top: 24px;
+      margin-bottom: 19px;
+     
+      .message {
+        margin: 0;
+        color: $color-black-2;
+        font-size: 14px;
+      }
+    }
+
+    .prof-name-wrapper {
+      text-align: left;
+
+      &.to-right {
+        text-align: right;
+      }
+    }
+    
+    .name, .position {
+      font-size: 14px;
+      color:$color-black-4;
+    }
+    .position {
+      font-weight: 600;
+    }
+    
+    .date {
+      color: rgb(165, 165, 165);
+      font-size: 14px;
+    }
+    
+  }  
+
+  }
+
+  
+.message-wrapper {
+  margin-top: 19px;
+  margin-bottom: 57px;
+  
+  .input-box {
+    width: 600px;
+    padding: 13px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
+    color: rgb(112, 112, 112);
+    font-size: 14px;
+  }
+
+  .paper-plane-icon {
+    max-width: 52px;
+    min-height: 45px;
+  }
+
+}
+
+.btn-accept {
+  @include btn-secondary;
+  width: 124px;
+}
+
+.btn-decline {
+  @include btn-primary;
+  width: 124px;
+}
+
+
+

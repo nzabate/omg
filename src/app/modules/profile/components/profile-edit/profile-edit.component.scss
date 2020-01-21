@@ -1,0 +1,45 @@
+@import "src/styleguide/shared.scss";
+
+app-card {
+  width: 100%;
+}
+
+.register-container {
+  .app-card-content {
+    width: 100%;
+
+    .mat-datepicker-toggle {
+      display: none;
+    }
+  }
+
+  app-image-upload {
+    padding: 110px 0 0 100px;
+  }
+}
+
+.register-card {
+  padding: 50px;
+}
+
+.btn-container {
+  margin-top: 25px;
+}
+
+.btn-register {
+  @include btn-primary;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  @include btn-secondary;
+
+  margin-right: 15px;
+}

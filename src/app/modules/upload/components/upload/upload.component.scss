@@ -1,0 +1,36 @@
+@import "src/styleguide/shared.scss";
+
+.upload-container {
+  width: 100%;
+
+  app-card,
+  .app-card-content {
+    width: 100%;
+  }
+
+  .upload-file-container {
+    width: 100%;
+    padding: 50px 20px;
+    border: 1px solid $color-gray;
+    border-radius: 2px;
+
+    .upload-icon {
+      width: 80px;
+    }
+
+    .drag-drop-text {
+      font-size: 14px;
+      color: #343A40;
+      text-align: center;
+
+      .click-here {
+        color: $color-primary;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

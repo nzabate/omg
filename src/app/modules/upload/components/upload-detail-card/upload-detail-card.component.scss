@@ -1,0 +1,25 @@
+@import "src/styleguide/shared";
+
+.header {
+    background-color: #0c459e;
+    color: #fff;
+    padding: 8px 20px;
+
+    .btn-edit {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        min-width: 0;
+        color: #fff;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.content {
+    padding: 20px;
+    border-left: 1px solid $color-gray;
+    border-right: 1px solid $color-gray;
+    border-bottom: 1px solid $color-gray;
+}

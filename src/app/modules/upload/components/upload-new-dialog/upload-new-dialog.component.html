@@ -1,0 +1,17 @@
+<div fxLayout="column">
+  <div mat-dialog-content class="upload-file-container" fxLayout="column">
+    <div fxLayout="column" class="ta-right" (click)="dialogRef.close()">
+      <i class="fas fa-times close-icon"></i>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px" appDragDrop (onFileDropped)="onFileUpload($event[0])">
+      <div fxLayout="column" fxFlex>
+        <img src="/assets/icons/upload_icon.svg" class="upload-icon">
+      </div>
+      <div class="drag-drop-text" fxFlex>
+        <span>Drag and drop or <span class="click-here" (click)="fileUploadInput.click()">click here</span></span><br>
+        <span>Upload only one main image</span>
+        <input type="file" (change)="onFileUpload($event.target.files[0])" accept=".png,.jpg" hidden #fileUploadInput>
+      </div>
+    </div>
+  </div>
+</div>

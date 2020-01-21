@@ -1,0 +1,37 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<div fxLayout="column" fxLayoutGap="30px">
+  <div fxLayoutAlign="center center">
+    <img src="assets/img/login-logo.png" />
+  </div>
+  <form [formGroup]="loginForm" fxLayout="column" fxLayoutGap="30px" (ngSubmit)="onSubmit()">
+    <mat-card class="lc">
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="15px">
+          <mat-form-field floatLabel="never" hideRequiredMarker>
+            <input type="text" matInput formControlName="username" name="username" placeholder="Username" maxlength="50"
+                    required>
+            <mat-error>{{ getErrorMessage('username') }}</mat-error>
+          </mat-form-field>
+          <mat-form-field floatLabel="never" hideRequiredMarker>
+            <input type="password" matInput formControlName="password" name="password" placeholder="Password*" required>
+            <mat-error>{{ getErrorMessage('password') }}</mat-error>
+          </mat-form-field>
+          <mat-checkbox class="checkbox" (click)="notImplementedMsg()">Remember me</mat-checkbox>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div fxLayoutAlign="center center" class="button">
+      <button class="btn-login" type="submit" color="primary" [disabled]="(authService.isLoggingIn$ | async)?.isLoggingIn" mat-button>
+        <mat-icon *ngIf="(authService.isLoggingIn$ | async)?.isLoggingIn; else loginText">
+          <mat-spinner diameter="20"></mat-spinner>
+        </mat-icon>
+        <ng-template #loginText>Login</ng-template>
+      </button>
+    </div>
+  </form>
+
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <p class="btn-forgot-password"><span class="pass-link" (click)="notImplementedMsg()">Forgot Password?</span></p>
+    <p>Don't have an account yet? <span class="sign-up-link" routerLink="/register">Sign Up</span></p>
+  </div>
+</div>

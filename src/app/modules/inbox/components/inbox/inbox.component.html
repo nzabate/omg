@@ -1,0 +1,68 @@
+<app-card [title]="isSearch ? 'Search results': 'Inbox - task list'" [styles]="styles" width="1300px">
+  <section class="app-card-content">
+
+    <!-- header table -->
+    <div class="c-mat-table">
+
+      <div class="c-mat-header-row table-header">
+        <div class="c-mat-header-cell" *ngFor="let column of columnsHeader" fxLayoutAlign="center center" fxFlex="{{column.size}}">
+          {{ column.display }}
+        </div>
+      </div>
+
+      <mat-progress-bar mode="indeterminate" *ngIf="(loadDataTable$ | async) ? false : true"></mat-progress-bar>
+
+      <div class="c-mat-header-row">
+
+        <div class="c-mat-header-cell filter date" fxFlex="10" fxLayoutAlign="center center">
+          <mat-form-field fxFlex>
+            <input #inputDateRange matInput ngxDaterangepickerMd [(ngModel)]="selected" placeholder="Search"
+                   (change)="onDateChange($event)" autocomplete="off"/>
+          </mat-form-field>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="35" fxLayoutAlign="center center">
+          <mat-form-field fxFlex>
+            <input matInput #inputSearchName placeholder="Search" (keyup)="onSearchName(inputSearchName.value)">
+          </mat-form-field>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="15" fxLayoutAlign="center center">
+          <app-dropdown-multi-select-search fxFlex *ngIf="filterData?.categories" [dataList]="filterData?.categories"
+                                            [placeHolder]="'Fitler'" [multiSelectDropdown]="true" [searchItem]="true"
+                                            (selectItemChange)="onSelectCategoryChange($event.value)" [clearOption]="resetSelect$">
+          </app-dropdown-multi-select-search>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="15" fxLayoutAlign="center center">
+          <app-dropdown-multi-select-search fxFlex *ngIf="filterData?.languages" [dataList]="filterData?.languages" [placeHolder]="'Filter'"
+                                            [multiSelectDropdown]="true" [searchItem]="true"
+                                            (selectItemChange)="onSelectLanguageChange($event.value)" [clearOption]="resetSelect$">
+          </app-dropdown-multi-select-search>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="10" fxLayoutAlign="center center">
+          <app-dropdown-multi-select-search fxFlex *ngIf="filterData?.statuses" [dataList]="filterData?.statuses" [placeHolder]="'Filter'"
+                                            [multiSelectDropdown]="true" [searchItem]="true"
+                                            (selectItemChange)="onSelectStatusChange($event.value)" [clearOption]="resetSelect$">
+          </app-dropdown-multi-select-search>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="10" fxLayoutAlign="center center">
+          <app-dropdown-multi-select-search fxFlex *ngIf="filterData?.priority" [dataList]="filterData?.priority" [placeHolder]="'Filter'"
+                                            [multiSelectDropdown]="true" [searchItem]="true"
+                                            (selectItemChange)="onSelectPriorityChange($event.value)" [clearOption]="resetSelect$">
+          </app-dropdown-multi-select-search>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="15" fxLayoutAlign="center center">
+          <button type="button" class="reset-btn" (click)="onResetFilter()" mat-button>Reset Filters</button>
+        </div>
+
+      </div>
+
+      <app-data-table *ngIf="loadDataTable$" [loadData]="loadDataTable$" [type]="'inbox'" (deleteItemEmitter)="onDeleteInboxItem($event)"></app-data-table>
+
+    </div>
+  </section>
+</app-card>

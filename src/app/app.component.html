@@ -1,0 +1,44 @@
+<section fxFill>
+  <mat-sidenav-container fxFill [hasBackdrop]="true">
+    <mat-sidenav mode="over"
+                 #sidenav
+                 [(opened)]="opened"
+                 (opened)="events.push('open!')"
+                 (closed)="events.push('close!')">
+      <span class="close-sidenav">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </span>
+      <mat-list>
+        <mat-list-item 
+                        [routerLink]="(canQa$ | async) ? ['/inbox'] : ['/upload']" 
+                        [routerLinkActive]="['active']" 
+                        [routerLinkActiveOptions]="{ exact: false, __change_detection_hack__: (canQa$ | async) ? ['/inbox'] : ['/upload'] }" 
+                        (click)="sidenav.toggle()">{{ (canQa$ | async) ? 'Inbox' : 'Upload' }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item 
+                        [routerLink]="!(canQa$ | async) ? ['/inbox'] : ['/upload']" 
+                        [routerLinkActive]="['active']" 
+                        [routerLinkActiveOptions]="{ exact: false, __change_detection_hack__: !(canQa$ | async) ? ['/inbox'] : ['/upload'] }" 
+                        (click)="sidenav.toggle()">{{ !(canQa$ | async) ? 'Inbox' : 'Upload' }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/search']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">Search</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/history']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">History</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/profile']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">Profile</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="onLogout(sidenav)">Logout</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFill fxLayout="column" fxLayoutAlign="center center">
+      <app-header [sidenav]="sidenav" *ngIf="(isLoggedIn$ | async)"></app-header>
+      <div class="main-content" [ngClass]="{'main': !nbg}" fxLayoutAlign="center center">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>

@@ -1,0 +1,24 @@
+<div fxLayout="column">
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="20px">
+      <div fxLayout="column" class="ta-right" (click)="onClose()">
+          <i class="fas fa-times close-icon"></i>
+      </div>
+      <!-- TODO: Compile this into one implementation -->
+      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="uploadSavedData.sendType === 'save'">
+        <h2>Upload successful!</h2>
+        <p>{{ uploadSavedData.fileName }} has been uploaded.</p>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="uploadSavedData.sendType === 'update'">
+        <h2>Update successful!</h2>
+        <p>{{ uploadSavedData.fileName }} has been updated successfully.</p>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center" *ngIf="uploadSavedData.sendType === 'sendToQa'">
+        <h2>Update successful!</h2>
+        <p>{{ uploadSavedData.fileName }} has been sent to QA.</p>
+      </div>
+      <!------------------------------------------------>
+    </div>
+    <div mat-dialog-actions fxLayoutAlign="end center">
+      <button class="btn-ok" mat-button type="button" (click)="onConfirm()">OK</button>
+    </div>
+</div>

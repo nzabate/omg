@@ -1,0 +1,31 @@
+<section class="upload-container">
+  <form [formGroup]="uploadFormGroup">
+    <app-card [title]="(mainImageUpload$ | async)?.base64 ? 'File upload' : 'Upload'" 
+              [width]="(mainImageUpload$ | async)?.base64 ? '1300px': '460px'">
+      <section class="app-card-content">
+        <div class="upload-file-container" *ngIf="!(mainImageUpload$ | async)?.base64">
+          <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px" (onFileDropped)="onFileUpload($event[0])" appDragDrop>
+            <div class="upload-icon" fxFlex>
+              <img src="/assets/icons/upload_icon.svg">
+            </div>
+            <div class="drag-drop-text" fxFlex>
+              <span>Drag and drop or <span class="click-here" (click)="fileUploadInput.click()">click here</span></span><br>
+              <span>Upload only one main image</span>
+              <input type="file" (change)="onFileUpload($event.target.files[0])" accept=".png,.jpg" hidden #fileUploadInput>
+            </div>
+          </div>
+        </div>
+
+      <div class="upload-file-form" *ngIf="(mainImageUpload$ | async)?.base64">
+
+        <!-- Create your template here! :) -->
+
+      </div>
+
+    </section>
+    </app-card>
+  </form>
+</section>
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<app-enlarge-image [showModal]="enlargeImage" [imageData]="(mainImageUpload$ | async)?.base64" 
+                    (showModalEmitter)="onShowImageModal()"></app-enlarge-image>

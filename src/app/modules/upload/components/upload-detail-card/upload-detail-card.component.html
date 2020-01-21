@@ -1,0 +1,7 @@
+<div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    {{ sidebarTitle }}
+    <button type="button" class="btn-edit" *ngIf="addEditOption" (click)="onEdit()">Edit</button>
+</div>
+<div class="content">
+    <ng-content></ng-content>
+</div>
