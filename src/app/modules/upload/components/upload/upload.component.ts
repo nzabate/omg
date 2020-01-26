@@ -28,6 +28,21 @@ export class UploadComponent implements OnInit, OnDestroy {
 
   @ViewChild('newTag', { static: false }) newTag: ElementRef;
 
+  dropDowns = [
+    {value: 'dropDown1', name: 'Drop Down 1'},
+    {value: 'dropDown2', name: 'Drop Down 2'},
+    {value: 'dropDown3', name: 'Drop Down 3'},
+    {value: 'dropDown4', name: 'Drop Down 4'},
+  ];
+  tags = ['Skull', 'Skeletal1', 'Vista Anterior', 'Skelital2', 'Vista Anterior2', 'Skelital3'];
+
+  tiles = [
+    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+  ];
+
   public toastTrigger$: Subject<ToastMessage> = new Subject<ToastMessage>();
   public mainImageUpload$: Observable<LocalFile>;
   public uploadForm$: Observable<UploadFormCollection>;
@@ -50,7 +65,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   ) {
 
     this.store.dispatch(new LoadUploadForm());
-    
+
     this.uploadForm$ = this.store.pipe(select(uploadFormCollectionSelector));
 
     this.uploadFormGroup = this.uploadFormBuilder.group({
@@ -117,7 +132,7 @@ export class UploadComponent implements OnInit, OnDestroy {
         summary: 'Error',
         detail: 'Invalid file type (Accepts only image files)'
       };
-      this.toastTrigger$.next(toast); 
+      this.toastTrigger$.next(toast);
     }
   }
 
@@ -288,7 +303,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   }
 
   private isFileTypeImage(file: File): boolean {
-    return (this.getFileType(file.name) === 'jpg' 
+    return (this.getFileType(file.name) === 'jpg'
             || this.getFileType(file.name) === 'jpeg')
             || this.getFileType(file.name) === 'png' ? true : false;
   }

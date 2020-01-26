@@ -34,3 +34,90 @@
     }
   }
 }
+.marginBot {
+  margin-bottom: 20px;
+}
+.mainImage {
+  width: 100%;
+}
+.btn {
+  height: 35px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: none;
+  width: 120px;
+}
+.btn100{
+  width: 100%;
+}
+.btn-gradiant {
+  color: #fff;
+  background: -webkit-gradient(linear, left top, right top, from(#1768a4), to(#6cb1df));
+  background: linear-gradient(to right, #1768a4 0%, #6cb1df 100%);
+}
+.btn-success {
+  color: #fff;
+  background: #28A745;
+}
+.enlargeImage {
+  cursor: pointer;
+}
+.enlargeImage img {
+  width: 11px;
+  height: 11px;
+  margin: 0 5px 0 0;
+}
+.thumbnailGroup {
+  position: relative;
+}
+.thumbnailGroup .overlay {
+  position: absolute;
+  bottom: 0px;
+  background-color: #0000007a;
+  width:100%;
+  padding: 2px 5px;
+}
+.thumbnailGroup .overlay span{
+  color: white;
+}
+.thumbnail .thumbnailImage{
+  width: 100%;
+  margin: 0;
+}
+.trashIcon{
+  width: 15px;
+  height: 15px;
+  float: right;
+  margin: 3px;
+}
+// cards styles
+mat-card-header {
+  background-color: #0C459E;
+}
+
+.formCardHeader {
+  height: 40px;
+  background-color: #0C459E;
+  color: #fff;
+  padding: 7px 15px;
+  width: 100%;
+}
+.formCardContent {
+  padding: 22px 15px;
+  border-left: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+}
+.borderBottom {
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.halfSize {
+  display: block;
+}
+.tag {
+  display: inline-block;
+  padding: 4px 7px;
+  background: #ccc;
+  border-radius: 5px;
+  margin: 0 8px 10px 0;
+}

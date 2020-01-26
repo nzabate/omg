@@ -1,6 +1,6 @@
 <section class="upload-container">
   <form [formGroup]="uploadFormGroup">
-    <app-card [title]="(mainImageUpload$ | async)?.base64 ? 'File upload' : 'Upload'" 
+    <app-card [title]="(mainImageUpload$ | async)?.base64 ? 'File upload' : 'Upload'"
               [width]="(mainImageUpload$ | async)?.base64 ? '1300px': '460px'">
       <section class="app-card-content">
         <div class="upload-file-container" *ngIf="!(mainImageUpload$ | async)?.base64">
@@ -17,15 +17,174 @@
         </div>
 
       <div class="upload-file-form" *ngIf="(mainImageUpload$ | async)?.base64">
-
         <!-- Create your template here! :) -->
+        <div class=" marginBot" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5%">
+          <div fxFlex="60%">
+            <img class="mainImage" src="https://www.auladeanatomia.com/osteologia/cranioanterior.jpg?x11964" alt="mainImage">
+            <div class="enlargeImage row marginBot" fxLayout="row" fxLayoutAlign="end center">
+                <img src="/assets/icons/enlarge_icon.svg" alt=""> Enlarge
+            </div>
+            <div class="marginBot" fxLayout="row" fxLayoutAlign="start center">
+              <button class="btn btn-gradiant marginBot" fxLayoutAlign="center" mat-button>
+                Add more files
+              </button>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="start center"  fxLayoutGap="5%">
+              <div fxFlex="20%" fxFlex.xs="40%" fxFlex.lt-md="25%" class="thumbnail">
+                <div class="thumbnailGroup">
+                  <img class="thumbnailImage" src="https://www.auladeanatomia.com/osteologia/cranioanterior.jpg?x11964" alt="mainImage">
+                  <div class="overlay">
+                      <span>image name</span>
+                      <img class="trashIcon" src="/assets/icons/trash-alt-solid.svg">
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="20%" fxFlex.xs="40%" fxFlex.lt-md="25%" class="thumbnail">
+                <div class="thumbnailGroup">
+                  <img class="thumbnailImage" src="https://www.auladeanatomia.com/osteologia/cranioanterior.jpg?x11964" alt="mainImage">
+                  <div class="overlay">
+                      <span>image name</span>
+                      <img class="trashIcon" src="/assets/icons/trash-alt-solid.svg">
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="20%" fxFlex.xs="40%" fxFlex.lt-md="25%" class="thumbnail">
+                <div class="thumbnailGroup">
+                  <img class="thumbnailImage" src="https://www.auladeanatomia.com/osteologia/cranioanterior.jpg?x11964" alt="mainImage">
+                  <div class="overlay">
+                      <span>image name</span>
+                      <img class="trashIcon" src="/assets/icons/trash-alt-solid.svg">
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="20%" fxFlex.xs="40%" fxFlex.lt-md="25%" class="thumbnail">
+                <div class="thumbnailGroup">
+                  <img class="thumbnailImage" src="https://www.auladeanatomia.com/osteologia/cranioanterior.jpg?x11964" alt="mainImage">
+                  <div class="overlay">
+                      <span>image name</span>
+                      <img class="trashIcon" src="/assets/icons/trash-alt-solid.svg">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="40%">
+            <!-- card 1 -->
+            <div class="formCard" fxLayout="row">
+              <div fxLayout="column" fxFlex="100%">
+                <div class="formCardHeader" fxLayout="row" fxFlex="100%" fxLayoutAlign="start center"> General information</div>
+                <div class="formCardContent" fxLayout="row" fxFlex="100%" fxLayoutAlign="start center">
+                  <div fxLayout="column" fxFlex="70">
+                    <mat-form-field>
+                      <input matInput placeholder="File name" value="Vista anterir.png">
+                    </mat-form-field>
+                    <mat-form-field>
+                      <textarea matInput placeholder="File description" value=""></textarea>
+                    </mat-form-field>
+                    <div fxLayout="row" fxLayout.lt-sm="row" fxLayoutGap="5%" fxFlex="70">
+                      <div fxFlex="50%">
+                        <mat-form-field class="halfSize">
+                          <mat-label>Language</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let item of dropDowns" [value]="item.value">
+                              {{item.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="50%">
+                        <mat-form-field class="halfSize">
+                          <mat-label>Category</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let item of dropDowns" [value]="item.value">
+                              {{item.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <!-- card 2 -->
+            <div class="formCard" fxLayout="row">
+              <div fxLayout="column" fxFlex="100%">
+                <div class="formCardHeader" fxLayout="row" fxFlex="100%" fxLayoutAlign="start center"> General information</div>
+                <div class="formCardContent" fxLayout="row" fxFlex="100%" fxLayoutAlign="start center">
+                  <div fxLayout="column" fxFlex="100">
+                    <div class="marginBot" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="3%">
+                      <div fxFlex="38" fxFlex.lt-sm="1">
+                        <mat-form-field class="halfSize">
+                          <mat-label>Tags</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let item of dropDowns" [value]="item.value">
+                              {{item.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div fxFlex="38" fxFlex.lt-sm="1">
+                          <mat-form-field class="halfSize">
+                            <input matInput placeholder="Vista anterior">
+                          </mat-form-field>
+                      </div>
+                      <div fxFlex="21" fxFlex.lt-sm="1" fxFlexAlign="center end">
+                        <button style="width: 100%" class="btn btn-gradiant" fxLayoutAlign="center" mat-button>
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                    <div class="tagContainer">
+                      <span class="tag" *ngFor="let tag of tags">{{tag}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- card 3 -->
+            <div class="formCard" fxLayout="row">
+              <div fxLayout="column" fxFlex="100%">
+                <div class="formCardHeader" fxLayout="row" fxFlex="100%" fxLayoutAlign="start center"> Priority for checking</div>
+                <div class="formCardContent borderBottom" fxLayout="row" fxFlex="100%" fxLayoutAlign="start center">
+                  <div fxLayout="column" fxFlex="100">
+                    <div fxLayout="row" fxLayoutGap="3%">
+                      <div fxFlex="38%" fxFlex.lt-sm="100">
+                        <mat-form-field class="halfSize">
+                          <mat-label>High Priority</mat-label>
+                          <mat-select>
+                            <mat-option *ngFor="let item of dropDowns" [value]="item.value">
+                              {{item.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="3%" fxLayoutAlign="end center" >
+                        <button mat-button fxFlex="25%" fxFlex.lt-sm="100%" class="btn100 btn-success" >
+                          Cancel
+                        </button>
+                        <button mat-button fxFlex="25%" fxFlex.lt-sm="100%" class="btn100 btn-gradiant" >
+                          Save
+                        </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.lt-sm="center">
+            <button mat-button fxFlex="20%" fxFlex.lt-sm="100%" class="btn100 btn-gradiant" >
+              Send for QA
+            </button>
+        </div>
       </div>
-
     </section>
     </app-card>
   </form>
 </section>
 <app-toast [trigger]="toastTrigger$"></app-toast>
-<app-enlarge-image [showModal]="enlargeImage" [imageData]="(mainImageUpload$ | async)?.base64" 
+<app-enlarge-image [showModal]="enlargeImage" [imageData]="(mainImageUpload$ | async)?.base64"
                     (showModalEmitter)="onShowImageModal()"></app-enlarge-image>
